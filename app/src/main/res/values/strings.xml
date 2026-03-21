@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Cool Business Card</string>
+    <string name="worker_name">Квентин Тарантино</string>
+    <string name="job">кинорежиссёр и сценарист</string>
+    <string name="phone_number">+7 (800) 555-35-35</string>
+    <string name="social_media">+7 (999) 555-36-36</string>
+    <string name="email">hollywood@gmail.com</string>
+    <string name="phone_description">phone</string>
 </resources>
