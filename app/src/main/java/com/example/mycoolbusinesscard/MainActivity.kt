@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BusinessCard(modifier: Modifier = Modifier) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(64.dp, Alignment.CenterVertically),
+        verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.padding(8.dp)
     ) {
@@ -59,9 +59,10 @@ fun BusinessCard(modifier: Modifier = Modifier) {
 @Composable
 fun MainInfoBlock(modifier: Modifier = Modifier) {
     Column (
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(bottom = 128.dp)
     ) {
-        Photo(img = painterResource(R.drawable.business_card_photo), modifier = Modifier.width(200.dp))
+        Photo(img = painterResource(R.drawable.business_card_photo), contentDescription = stringResource(R.string.worker_name), modifier = Modifier.height(150.dp).width(200.dp))
         Title(text = stringResource(R.string.worker_name), fontSize = 30.sp)
         Subtitle(text = stringResource(R.string.job))
     }
@@ -71,7 +72,7 @@ fun MainInfoBlock(modifier: Modifier = Modifier) {
 fun ContactsBlock(modifier: Modifier = Modifier) {
     Column (
         verticalArrangement = Arrangement.spacedBy(24.dp),
-        horizontalAlignment = Alignment.Start
+        modifier = Modifier.padding(bottom = 24.dp)
     ) {
         IconTextRow(text = stringResource(R.string.phone_number), icon = painterResource(R.drawable.phone))
         IconTextRow(text = stringResource(R.string.social_media), icon = painterResource(R.drawable.max))
@@ -80,17 +81,17 @@ fun ContactsBlock(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun Photo(img: Painter, modifier: Modifier = Modifier) {
+fun Photo(img: Painter, modifier: Modifier = Modifier, contentDescription: String) {
     Image(
         painter = img,
-        contentDescription = stringResource(R.string.worker_name),
+        contentDescription = contentDescription,
         modifier = modifier,
         contentScale = ContentScale.Crop
     )
 }
 
 @Composable
-fun Title(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 32.sp, fontWeight: FontWeight = FontWeight.Black) {
+fun Title(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 48.sp, fontWeight: FontWeight = FontWeight.SemiBold) {
     Text(
         text = text,
         fontSize = fontSize,
@@ -100,7 +101,7 @@ fun Title(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 32.s
 }
 
 @Composable
-fun Subtitle(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 16.sp, fontWeight: FontWeight = FontWeight.SemiBold) {
+fun Subtitle(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 16.sp, fontWeight: FontWeight = FontWeight.Bold) {
     Text(
         text = text,
         fontSize = fontSize,
@@ -113,13 +114,13 @@ fun Subtitle(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 1
 fun IconTextRow(text: String, icon: Painter, modifier: Modifier = Modifier, fontSize: TextUnit = 16.sp, contentDescription:String? = null) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier.height(24.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.height(32.dp)
     ) {
         Image(
             painter = icon,
             contentDescription = contentDescription,
-            modifier = Modifier.width(24.dp)
+            modifier = Modifier.width(32.dp)
         )
         Text(
             text = text,
