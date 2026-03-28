@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -47,11 +49,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BusinessCard(modifier: Modifier = Modifier) {
     Column(
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.padding(8.dp)
+        modifier = modifier.fillMaxSize().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        MainInfoBlock()
+        Box(
+            modifier = Modifier.weight(1f),
+            contentAlignment = Alignment.Center
+        ) {
+            MainInfoBlock()
+        }
         ContactsBlock()
     }
 }
@@ -60,7 +66,7 @@ fun BusinessCard(modifier: Modifier = Modifier) {
 fun MainInfoBlock(modifier: Modifier = Modifier) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(bottom = 128.dp)
+        modifier = Modifier
     ) {
         Photo(img = painterResource(R.drawable.business_card_photo), contentDescription = stringResource(R.string.worker_name), modifier = Modifier.height(150.dp).width(200.dp))
         Title(text = stringResource(R.string.worker_name), fontSize = 30.sp)
@@ -91,7 +97,7 @@ fun Photo(img: Painter, modifier: Modifier = Modifier, contentDescription: Strin
 }
 
 @Composable
-fun Title(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 48.sp, fontWeight: FontWeight = FontWeight.SemiBold) {
+fun Title(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 64.sp, fontWeight: FontWeight = FontWeight.SemiBold) {
     Text(
         text = text,
         fontSize = fontSize,
