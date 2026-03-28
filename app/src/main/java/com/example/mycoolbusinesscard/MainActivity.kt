@@ -49,7 +49,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BusinessCard(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(
@@ -68,9 +70,11 @@ fun MainInfoBlock(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
     ) {
-        Photo(img = painterResource(R.drawable.business_card_photo), contentDescription = stringResource(R.string.worker_name), modifier = Modifier.height(150.dp).width(200.dp))
-        Title(text = stringResource(R.string.worker_name), fontSize = 30.sp)
-        Subtitle(text = stringResource(R.string.job))
+        Photo(img = painterResource(R.drawable.business_card_photo), contentDescription = stringResource(R.string.worker_name), modifier = Modifier
+            .height(150.dp)
+            .width(200.dp))
+        Text(text = stringResource(R.string.worker_name), fontSize = 30.sp, fontWeight = FontWeight.SemiBold)
+        Text(text = stringResource(R.string.job), fontSize = 16.sp, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -93,26 +97,6 @@ fun Photo(img: Painter, modifier: Modifier = Modifier, contentDescription: Strin
         contentDescription = contentDescription,
         modifier = modifier,
         contentScale = ContentScale.Crop
-    )
-}
-
-@Composable
-fun Title(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 64.sp, fontWeight: FontWeight = FontWeight.SemiBold) {
-    Text(
-        text = text,
-        fontSize = fontSize,
-        modifier = modifier,
-        fontWeight = fontWeight
-    )
-}
-
-@Composable
-fun Subtitle(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 16.sp, fontWeight: FontWeight = FontWeight.Bold) {
-    Text(
-        text = text,
-        fontSize = fontSize,
-        modifier = modifier,
-        fontWeight = fontWeight
     )
 }
 
